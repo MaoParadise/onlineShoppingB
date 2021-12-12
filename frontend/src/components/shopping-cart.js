@@ -125,3 +125,7 @@ const buyNow = (item) => {
     shoppingCartContainer.scrollIntoView({behavior: "smooth"});
     handleShoppingCartContainer(item);
 }
+
+shoppingCartButton.onclick = ()  => {
+    handleShoppingCartContainer();
+}

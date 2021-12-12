@@ -20,6 +20,7 @@ searchButton.onclick = () => {
     searchProduct();
 }
 
+// funcion que hace el llamado a la API para buscar los productos filtrados
 const searchProduct = () => {
     fetchData.getProductsByName(fetchData.API_URL, HTMLResponse, productSearch);
 }

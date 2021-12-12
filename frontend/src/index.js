@@ -1,19 +1,15 @@
+/*
+    la logica del sitio esta en los componentes js en la carpeta src/components
+*/
 
 import fetchData from './utils/fetchData.js';
 
 
-// start fetching data and render it
+// inicializacion de la pagina y renderizando en el DOM los componentes dinamicos
 fetchData.getProducts(fetchData.API_URL, HTMLResponse);
 fetchData.getCategories(fetchData.API_URL);
 renderShoppingCart();
 renderCategories();
-
-// events
-shoppingCartButton.onclick = ()  => {
-    handleShoppingCartContainer();
-}
-
-
 
 
 
