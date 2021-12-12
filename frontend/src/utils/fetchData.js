@@ -1,5 +1,6 @@
 const fetchData = {}
 
+fetchData.API_URL = 'http://localhost:3500/api/';
 
 // todo objeto json recibido desde el backend tiene un message, un status y un result
 // que el status sea true indica que se ha realizado correctamente
@@ -36,6 +37,7 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
     return fetch(`${api_url}/products/${name}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if(data.status){
             products = data.result;
             renderProducts(html_response);
