@@ -1,0 +1,114 @@
+.shopping-cart-container{
+    width: 0%;
+    height: 90vh;
+    position: absolute;
+    top: 62px;
+    right: 0;
+    background-color: #ccc;
+    color: #131313;
+    border-bottom-left-radius: 2rem;
+    z-index: 1;
+    transition: width 0.5s;
+    text-align: center;
+    overflow: auto;
+}
+
+.shopping-cart-container > h2 {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.shopping-cart-container > .shopping-cart-body{
+    overflow: auto;
+    width: 100%;
+    height: 70vh;
+}
+
+.open{
+    width: 30%;
+}
+
+.shopping-cart-body .product-cart{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopping-cart-body .product-cart .quantity-product-cart,
+.shopping-cart-body .product-cart .options-product-cart{
+    width: 20%;
+    text-align: center;
+}
+
+.shopping-cart-body .product-cart .options-product-cart{
+    color: #dd4545;
+    cursor: pointer;
+}
+
+.shopping-cart-body .product-cart .options-product-cart:hover{
+    color: #f16464;
+}
+
+.shopping-cart-body .product-cart .quantity-product-cart .plus-product{
+    width: 50%;
+}
+
+
+.shopping-cart-body .product-cart .description-product-cart{
+    
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shopping-cart-body .product-cart .description-product-cart img{
+    width: 35%;
+    height: 100%;
+    
+}
+
+.shopping-cart-footer{
+    width: 100%;
+    height: 9.1vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px solid #131313;
+}
+
+.shopping-cart-footer .total-price{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-left: 24px;
+}
+
+.shopping-cart-footer .check-in{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shopping-cart-footer .check-in .buy-now{
+    width: 80%;
+    height: 80%;
+    border-style: none;
+    background-color: #131313;
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+.shopping-cart-footer .check-in .buy-now:hover{
+    background-color: #fff;
+    color: #131313;
+}
