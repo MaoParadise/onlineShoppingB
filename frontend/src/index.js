@@ -3,6 +3,7 @@
 */
 
 import fetchData from './utils/fetchData.js';
+const search = document.querySelector('.search');
 
 
 // inicializacion de la pagina y renderizando en el DOM los componentes dinamicos
@@ -12,4 +13,12 @@ renderShoppingCart();
 renderCategories();
 
 
-
+// la funcion showEveryone a diferencia de hacer un re-render manda una solicitud otra vez a la API
+// para que se muestren todos los productos y luego hace un render de los componenetes quitando cualquier
+// filtro que se haya aplicado
+showEveryone.onclick = () => {
+    search.value = '';
+    resetPagination();
+    fetchData.getProducts(fetchData.API_URL, HTMLResponse);
+    fetchData.getCategories(fetchData.API_URL);
+}

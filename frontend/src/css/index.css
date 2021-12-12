@@ -10,6 +10,7 @@ body{
 }
 
 .filters{
+    position: relative;
     width: 90%;
     margin-bottom: 24px;
     font-weight: bold;
@@ -17,6 +18,24 @@ body{
     flex-direction: row;
     justify-content: end;
     align-items: center;
+}
+
+.filters .show-everyone{
+    cursor: pointer;
+    position: absolute;
+    top: -24px;
+    right: 0;
+    color: rgb(189, 189, 189);
+}
+
+.filters .order-by{
+    color: rgb(189, 189, 189);
+    cursor: pointer;
+}
+
+.filters .show-everyone:hover,
+.filters .order-by:hover{
+    color: #131313;
 }
 
 .filters .order-by-names,
@@ -197,5 +216,12 @@ body{
 body .pagination .active-page{
     background-color: rgb(240, 240, 240);
     color: #131313;
+}
+
+.pagination .previous{
+    border-radius: 15px 0 0 15px;
+}
+.pagination .next{
+    border-radius: 0 15px 15px 0;
 }
 
