@@ -173,4 +173,29 @@ body{
     right: 50px;
 }
 
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pagination button{
+    background-color: #ccc;
+    padding: 1.2rem;
+    border-style: none;
+    cursor: pointer;
+    border: #131313 solid 1px;
+}
+
+.pagination button:hover{
+    background-color: #131313;
+    color: #fff;
+}
+
+body .pagination .active-page{
+    background-color: rgb(240, 240, 240);
+    color: #131313;
+}
 

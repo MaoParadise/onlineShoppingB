@@ -10,14 +10,24 @@ search.addEventListener('keyup', (event) => {
         productSearch = event.target.value;
         // si el usuario presiona enter en el input, se ejecuta la funcion searchProduct
         if(event.keyCode === 13) {
-           searchProduct();
+            if(productSearch !== '') {
+                searchProduct();
+            }else{
+                fetchData.getProducts(fetchData.API_URL, HTMLResponse);
+                resetPagination(); // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
+            }
         }
     }
 );
 
 // activala busqueda de productos al presionar el boton de busqueda
 searchButton.onclick = () => {
-    searchProduct();
+    if(search.value !== '') {
+        searchProduct();
+    }else{
+        fetchData.getProducts(fetchData.API_URL, HTMLResponse);
+        resetPagination(); // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
+    }
 }
 
 // funcion que hace el llamado a la API para buscar los productos filtrados
