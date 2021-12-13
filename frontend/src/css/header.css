@@ -16,6 +16,7 @@ header{
     display: flex;
     align-items: center;
     color: var(--secondary-color-light);
+    cursor: pointer;
 }
 
 .img-title{
