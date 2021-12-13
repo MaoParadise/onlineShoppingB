@@ -47,5 +47,9 @@ la lógica del backend se encuentra escrita en esta carpeta, esta divida en la c
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/routes    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;database.js    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.js  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keys.js  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keys.js 
+
+## API del backend
+
+vease en la carpeta documentations el apartado de useAPI.md que explica la estructura de la API del backend
    
