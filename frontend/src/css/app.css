@@ -186,6 +186,7 @@
 .pagination{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
@@ -218,3 +219,61 @@ body .pagination .active-page{
     border-radius: 0 15px 15px 0;
 }
 
+@media (max-width: 768px){
+    
+    #app .product{
+        height: 250px;
+        width: 150px;        
+    }
+
+    .product .image{
+        width: 100%;
+        height: 50%;
+    }
+
+
+    .product .description{
+        width: 100%;
+        height: 50%;
+    }
+
+    .product .description h4{
+        font-size: 0.6rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .product .description p{
+        padding: 0 0 1rem 0;
+        text-align: center;
+        margin-right: 15px;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+
+    .product .description .add-to-cart,
+    .product .description .buy{
+        position: absolute;
+        background-color: var(--secondary-color-light);
+        color: var(--primary-color-light);
+        bottom: 5px;
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border-style: none;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .product .description .add-to-cart
+    {
+        right: 80px;
+    }
+
+    .filters{
+        flex-wrap: wrap;
+    }
+}

@@ -112,3 +112,14 @@
     background-color: var(--primary-color-light);
     color: var(--secondary-color-light);
 }
+
+@media (max-width: 768px){
+    .shopping-cart-container{
+        top: 122px;
+    }
+
+    .open{
+        width: 90%;
+    }
+
+}

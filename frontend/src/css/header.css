@@ -76,3 +76,34 @@ header{
     background-color: rgb(126, 214, 115);
     color: #fff;
 }
+
+@media (max-width: 768px) {
+
+    header {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header .title span{
+        display: none;
+    }
+
+    .product-navbar .search-button{
+        display: none;
+    }
+
+    .product-navbar{
+        width: 80%;
+    }
+    .product-section{
+        width: 100%;
+    }
+    
+    .product-navbar .search{
+        width: 80%;
+    }
+}
