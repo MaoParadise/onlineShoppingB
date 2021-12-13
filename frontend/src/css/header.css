@@ -1,7 +1,8 @@
 header{
     width: 100%;
     height: 60px;
-    border-bottom: 2px solid #ccc;
+    background-color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color-dark);
     margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
@@ -14,12 +15,13 @@ header{
     padding-left: 15px;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: var(--secondary-color-light);
 }
 
 .img-title{
     height: 60px;
     width: 140px;
+    filter: drop-shadow(1px 1px 1px var(--secondary-color-light));
 }
 
 .product-navbar{
@@ -33,7 +35,7 @@ header{
 .product-navbar .search{
     width: 600px;
     height: 40px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color-dark);
     border-radius: 5px;
     padding-left: 10px;
     margin-right: 0;
@@ -48,15 +50,15 @@ header{
     margin-left: 0;
     cursor: pointer;
     font-weight: bold;
-    color: #f5f5f5;
-    background-color: #131313;
+    color: var(--primary-color-light);
+    background-color: var(--secondary-color-light);
     border-style: none;
     border-radius: 5px;
 }
 
 .product-navbar .shopping-cart{
     font-size: 1.5rem;
-    color: rgb(129, 129, 129);
+    color: var(--secondary-color-light);
     position: relative;
     cursor: pointer;
 }

@@ -14,17 +14,17 @@
     position: absolute;
     top: -24px;
     right: 0;
-    color: rgb(189, 189, 189);
+    color: var(--secondary-color-dark);
 }
 
 .filters .order-by{
-    color: rgb(189, 189, 189);
+    color: var(--secondary-color-dark);
     cursor: pointer;
 }
 
 .filters .show-everyone:hover,
 .filters .order-by:hover{
-    color: #131313;
+    color: var(--primary-color-dark);
 }
 
 .filters .order-by-names,
@@ -33,9 +33,10 @@
     display: flex;
     flex-direction: row;
     font-weight: bold;
-    background-color: rgb(240, 240, 240);
+    background-color: var(--secondary-color-light);
     border-style: none;
-    border: 1px solid #131313;
+    border: 1px solid var(--primary-color-light);
+    color: var(--primary-color);
     padding: 0.55rem;
     cursor: pointer;
 }
@@ -43,8 +44,8 @@
 .filters .order-by-names:hover,
 .filters .order-by-prices:hover,
 .filters .order-by-categories:hover{
-    background-color: #131313;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color-light);
 }
 
 .filters .order-by-names{
@@ -73,10 +74,10 @@
 }
 
 #app .product{
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 1rem;
     padding: 1.2rem 0 0 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color-dark);
     height: 350px;
     width: 250px;
     display: flex;
@@ -117,7 +118,7 @@
     right: 0;
     left: 20%;
     bottom: 0;
-    color: #fff;
+    color: var(--secondary-color-light);
     font-size: 1.1rem;
 }
 
@@ -132,8 +133,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #131313;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color-light);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -141,8 +142,8 @@
 .product .description h4{
     padding: 0.5rem 0 0.5rem 0;
     text-align: center;
-    background-color: #ccc;
-    color: #131313;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color-light);
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0;
@@ -159,7 +160,8 @@
 .product .description .add-to-cart,
 .product .description .buy{
     position: absolute;
-    background-color: #ccc;
+    background-color: var(--secondary-color-light);
+    color: var(--primary-color-light);
     bottom: 5px;
     right: 5px;
     width: 40px;
@@ -190,21 +192,23 @@
 }
 
 .pagination button{
-    background-color: #ccc;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 1.2rem;
     border-style: none;
     cursor: pointer;
-    border: #131313 solid 1px;
+    border: var(--secondary-color-dark) solid 1px;
 }
 
 .pagination button:hover{
-    background-color: #131313;
-    color: #fff;
+    background-color: var(--secondary-color-light);
+    color: var(--primary-color);
 }
 
 body .pagination .active-page{
-    background-color: rgb(240, 240, 240);
-    color: #131313;
+    background-color: var(--secondary-color-light);
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 .pagination .previous{
