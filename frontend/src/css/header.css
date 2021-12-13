@@ -12,6 +12,14 @@ header{
 .title{
     font-size: 1.5rem;
     padding-left: 15px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.img-title{
+    height: 60px;
+    width: 140px;
 }
 
 .product-navbar{
