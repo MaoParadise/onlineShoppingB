@@ -13,10 +13,7 @@ app.set('json spaces', 4);
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(cors({
-    origin: ['http://localhost:5500','http://localhost','http://127.0.0.1','http://127.0.0.1:5500'],
-    credentials: true
-}));
+app.use(cors());
 
 // Routes
 app.use(require('./routes/index'));

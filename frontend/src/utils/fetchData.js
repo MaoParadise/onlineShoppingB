@@ -1,7 +1,7 @@
 const fetchData = {}
 const loading  = document.querySelector('.loading-stand');
 
-fetchData.API_URL = 'http://localhost:3500/api/';
+fetchData.API_URL = 'https://bsale-exercise.herokuapp.com/api/';
 
 
 // todo objeto json recibido desde el backend tiene un message, un status y un result

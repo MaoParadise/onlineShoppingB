@@ -5,7 +5,7 @@ const htmlCartCounter = document.querySelector('.cart-count');
 const shoppingCartContainer = document.querySelector('.shopping-cart-container');
 const shoppingCartBody = document.querySelector('.shopping-cart-body');
 const shoppingCartTotalPrice = document.querySelector('.total-price');
-const defaultImage = 'http://127.0.0.1:5500/frontend/images/default_product.png';
+const defaultImage = 'https://romantic-heisenberg-14b73f.netlify.app/images/default_product.png';
 
 const shoppingCartButton = document.querySelector('.shopping-cart');
 

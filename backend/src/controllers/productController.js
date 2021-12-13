@@ -13,7 +13,8 @@ productCtrl.getProducts = async ( req, res) =>{
         if(err) {
             return res.json({
                 message: 'Error al obtener todos los productos en el metodo getProducts',
-                status: false
+                status: false,
+                result: err
             })
         }
         if(rows.length > 0){
@@ -37,7 +38,8 @@ productCtrl.getCategories = async (req, res) => {
         if(err) {
             return res.json({
                 message: 'Error al obtener las categorias en el metodo getCategories',
-                status: false
+                status: false,
+                result: err
             })
         }
         if(rows.length > 0){
@@ -62,7 +64,8 @@ productCtrl.getProductByName = async (req, res) => {
         if(err) {
             return res.json({
                 message: 'Error en la consulta de producto en metodo getProductByName',
-                status: false
+                status: false,
+                result: err
             })
         }
         if(rows.length > 0){
