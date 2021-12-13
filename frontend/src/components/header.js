@@ -10,11 +10,12 @@ search.addEventListener('keyup', (event) => {
         productSearch = event.target.value;
         // si el usuario presiona enter en el input, se ejecuta la funcion searchProduct
         if(event.keyCode === 13) {
+            resetPagination(); 
             if(productSearch !== '') {
                 searchProduct();
             }else{
                 fetchData.getProducts(fetchData.API_URL, HTMLResponse);
-                resetPagination(); // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
+                // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
             }
         }
     }

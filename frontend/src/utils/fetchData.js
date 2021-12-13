@@ -1,6 +1,8 @@
 const fetchData = {}
+const loading  = document.querySelector('.loading-stand');
 
 fetchData.API_URL = 'http://localhost:3500/api/';
+
 
 // todo objeto json recibido desde el backend tiene un message, un status y un result
 // que el status sea true indica que se ha realizado correctamente
@@ -8,19 +10,22 @@ fetchData.API_URL = 'http://localhost:3500/api/';
 
 
 fetchData.getProducts = async (api_url, html_response) => {
+    loading.classList.add('loading-screen');
     return fetch(`${api_url}/products`)
     .then(response => response.json())
     .then(data => {
         if(data.status){
             products = data.result;
-            renderProducts(html_response);
+            renderProducts(html_response);;
         }else{
             console.log(data.message);
         }
+        loading.classList.remove('loading-screen');
     })
 }
 
 fetchData.getCategories = async (api_url) => {
+    loading.classList.add('loading-screen');
     return fetch(`${api_url}/categories`)
     .then(response => response.json())
     .then(data => {
@@ -30,10 +35,12 @@ fetchData.getCategories = async (api_url) => {
         }else{
             console.log(data.message);
         }    
+        loading.classList.remove('loading-screen');
     })
 }
 
 fetchData.getProductsByName = async (api_url, html_response, name) => {
+    loading.classList.add('loading-screen');
     return fetch(`${api_url}/products/${name}`)
     .then(response => response.json())
     .then(data => {
@@ -44,6 +51,7 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
         }else{
             console.log(data.message);
         }
+        loading.classList.remove('loading-screen');
     })
 }
 
