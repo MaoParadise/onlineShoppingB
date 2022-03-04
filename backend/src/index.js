@@ -12,7 +12,7 @@ app.set('port', process.env.PORT || 3500);
 app.set('json spaces', 4);
 
 // Middlewares
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(cors());
 
 // Routes
