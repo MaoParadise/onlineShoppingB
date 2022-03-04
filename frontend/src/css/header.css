@@ -3,14 +3,15 @@ header{
     height: 60px;
     background-color: var(--primary-color);
     border-bottom: 2px solid var(--secondary-color-dark);
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 
 .title{
+    width: 40%;
     font-size: 1.5rem;
     padding-left: 15px;
     display: flex;
@@ -21,6 +22,12 @@ header{
 
 .img-title{
     font-size: 2.3rem;
+    margin-right: 2rem;
+    filter: drop-shadow(1px 1px 1px var(--secondary-color-light));
+}
+
+.logo-title{
+    width: 30%;
     margin-right: 2rem;
     filter: drop-shadow(1px 1px 1px var(--secondary-color-light));
 }
@@ -98,6 +105,16 @@ header{
         margin-right: 0;
         filter: drop-shadow(1px 1px 1px var(--secondary-color-light));
     }
+
+    .title {
+        width: 50%;
+    }
+    .logo-title{
+        width: 60%;
+        margin-right: 0;
+        filter: drop-shadow(1px 1px 1px var(--secondary-color-light));
+    }
+
 
     .product-navbar .search-button{
         display: none;

@@ -1,6 +1,7 @@
 /*
     la logica del sitio esta en los componentes js en la carpeta src/components
 */
+
 import fetchData from './utils/fetchData.js';
 const search = document.querySelector('.search');
 const title = document.querySelector('.title');

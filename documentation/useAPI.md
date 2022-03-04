@@ -32,8 +32,7 @@ al iniciar la pagina se muestra el siguiente objeto.
     /*
     -en caso de no encontrar productos el parametro result sera un array vacio.
 
-    -en caso de error inesperado el res
-    el parametro result sera el error resultante de la consulta
+    -en caso de error inesperado el parametro result sera el error resultante de la consulta
     */
 
 
@@ -47,8 +46,7 @@ al iniciar la pagina se muestra el siguiente objeto.
     /*
     -en caso de no encontrar productos el parametro result sera un array vacio.
 
-    -en caso de error inesperado el res
-    el parametro result sera el error resultante de la consulta
+    -en caso de error inesperado el parametro result sera el error resultante de la consulta
     */
 
 ### /api/categories - GET - Obtiene la lista de categorias

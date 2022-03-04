@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="./images/favicon.jpeg">
+    <title> BSale Shopping Cart </title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href='./src/css/index.css'>
+    <link rel="stylesheet" href="./src/css/header.css">
+    <link rel="stylesheet" href="./src/css/app.css">
+    <link rel="stylesheet" href="./src/css/shopping-cart.css">
+    <link rel="stylesheet" href="./src/css/footer.css">
+    <link rel="stylesheet" href="./src/css/loading.css">
+</head>
+<body>
+    <header>
+        <div class="title">
+            <img class="logo-title" src="./images/logo.png" alt="logo">
+            <span> Shopping Cart </span>
+        </div>
+        <div class="product-navbar">
+            <div class="product-section">
+                <input 
+                    class="search"
+                    type="search"
+                    placeholder='escriba aqui, presione enter o haga click en el boton para buscar'
+                >
+                <button class="search-button"> Buscar </button>
+                <div class="fas fa-shopping-cart shopping-cart">
+                    <div class="cart-count"> </div>
+                </div>
+            </div>
+        </div>
+    </header> 
+        <div class="container">
+            <div class="left-filters">
+                <div> <span>ORDENAR POR</span> </div>
+                <ul>
+                    <li class="option order-by-names"> Nombre </li>
+                    <li class="option order-by-prices"> Precio </li>
+                    <li>
+                        <select class="order-by-categories"> 
+                            <option value="0">
+                                categorias
+                            </option>
+                            <option value=""></option>
+                        </select>
+                    </li>
+                </ul>
+                <div>
+                    <span class="order-by"> ASCENDENTE </span>
+                </div>
+                
+            </div>
+            
+            <div class="main-container">
+                <div class="filters">
+                    <span class="show-everyone"> Mostrar todos los productos </span>
+                </div> 
+                <div id="app"></div>
+                <div class="pagination">
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div id='shopping-cart-container' class="shopping-cart-container">
+            <h2> Carrito </h2>
+            <div class="shopping-cart-body">
+            </div>
+            <div class="shopping-cart-footer">
+                <div class="total-price">
+                    Total: $ 0
+                </div>
+                <div class="check-in">
+                    <button class="buy-now"> Comprar </button>
+                </div>
+            </div>
+        </div>
+    <footer>
+        <p> Desarrollado por : Carlos Andrés Pastén Bravo .-2022</p>
+        <p> Tecnologias usadas : <i class="fab fa-js"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-node-js"></i></p>
+
+    </footer>
+    <div class="loading-stand">
+        <div class="loading-icon">
+            <i class="fas loading-back fa-spinner"></i>
+            <i class="fas loading-rotate fa-spinner"></i>
+        </div>
+    </div>
+    <script type="module" src="./src/index.js"></script>
+    <script type="module" src="./src/components/header.js"></script>
+    <script src="./src/components/shopping-cart.js"></script>
+    <script src="./src/components/app.js"></script>
+    
+</body>
+</html>

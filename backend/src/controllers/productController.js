@@ -89,7 +89,7 @@ productCtrl.getProductByName = async (req, res) => {
 productCtrl.getProductsByCategory = async (req, res) => {
     const { categoryId } = req.params;
     const rows =
-    await pool.query(`SELECT * FROM product
+    await pool.query(`SELECT product.* FROM product
                         INNER JOIN category
                         ON product.category = category.id
                         WHERE product.category = ?`,

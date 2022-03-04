@@ -101,7 +101,7 @@ const deployCart = (shopping, html_response) => {
                 </div>
             </div>`);
     })
-    html_response.innerHTML = template;
+    html_response.innerHTML = template.join('');
 }
 
 

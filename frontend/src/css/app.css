@@ -1,6 +1,6 @@
 .filters{
     position: relative;
-    width: 90%;
+    width: 95%;
     margin-bottom: 24px;
     font-weight: bold;
     display: flex;
@@ -12,11 +12,11 @@
 .filters .show-everyone{
     cursor: pointer;
     position: absolute;
-    top: -24px;
-    right: 0;
-    color: var(--secondary-color-dark);
+    top: 0.5rem;
+    color: var(--primary-color);
 }
 
+/*
 .filters .order-by{
     color: var(--secondary-color-dark);
     cursor: pointer;
@@ -62,7 +62,7 @@
 
 .filters .order-by-categories option:hover{
     font-weight: bold;
-}
+} */
 
 #app{
     display: flex;
@@ -70,6 +70,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
     gap: 1rem;
 }
 

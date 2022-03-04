@@ -27,7 +27,7 @@ aquí se encuentra los recursos que no necesariamente implican lógica de progra
 
 ./assets  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/images    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;favicon.ico   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;favicon.jpge   
 
   
 
@@ -37,7 +37,7 @@ aquí se encuentra los recursos que no necesariamente implican lógica de progra
 ## backend
 
 ### sobre la estructura del back-end
-para su confección se usó **NodeJS** junto al framework de **Express**, está conformada por en su raíz por los package.json y la carpeta **/src**
+para su confección se usó **NodeJS** junto al framework de **Express**, está conformada en su raíz por los package.json y la carpeta **/src**
 
 
 ### sobre la carpeta /src

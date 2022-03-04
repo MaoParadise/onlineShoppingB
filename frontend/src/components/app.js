@@ -8,7 +8,8 @@ let typeOfSort = 'asc'; // varibale para almacenar el tipo de orden que se desea
 
 // elementos html que interactuan dentro del componente app.
 const HTMLResponse = document.querySelector('#app');
-let orderByNameButton = document.querySelector('.order-by-names');  
+let orderByNameButton = document.querySelector('.order-by-names');
+let leftOrderByNameButton = document.querySelector('.order-by-names2');  
 let orderByPriceButton = document.querySelector('.order-by-prices');
 let orderByCategories = document.querySelector('.order-by-categories');
 let pagination = document.querySelector('.pagination');
@@ -18,9 +19,7 @@ let orderBy = document.querySelector('.order-by');
 
 // funcion para renderizar los productos
 const renderProducts = (html_response) => {
-    
     setPagination();
-    
     // si el numero de productos es menor a 12 se muestran todos los productos
     if(paginations == 1){
         currentPage = 1;
@@ -64,7 +63,8 @@ const renderProducts = (html_response) => {
             </div>
         `
     });
-    html_response.innerHTML = template;
+    html_response.innerHTML = template.join('');
+   
 }
 
 // funcion para renderizar las categorias
@@ -183,11 +183,11 @@ orderBy.onclick = () => {
     if(typeOfSort == 'asc'){
         setTypeOfSort('desc');
         orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = ': descendente';
+        orderBy.lastElementChild.innerText = ': DESCENDENTE';
     }else{
         setTypeOfSort('asc');
         orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = ': ascendente';
+        orderBy.lastElementChild.innerText = ': ASCENDENTE';
     }  
 }
 

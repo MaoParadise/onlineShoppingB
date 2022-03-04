@@ -29,6 +29,7 @@ fetchData.getCategories = async (api_url) => {
     return fetch(`${api_url}/categories`)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if(data.status){
             categories = data.result;
             renderCategories();
