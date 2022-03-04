@@ -86,4 +86,35 @@ productCtrl.getProductByName = async (req, res) => {
     });
 }
 
+productCtrl.getProductsByCategory = async (req, res) => {
+    const { categoryId } = req.params;
+    const rows =
+    await pool.query(`SELECT * FROM product
+                        INNER JOIN category
+                        ON product.category = category.id
+                        WHERE product.category = ?`,
+    [req.params.categoryId] , (err, rows) => {
+        if(err) {
+            return res.json({
+                message: 'Error en la consulta de producto en metodo getProductsByCategory',
+                status: false,
+                result: err
+            })
+        }
+        if(rows.length > 0){
+            return res.json({ 
+                message: 'success',
+                status: true,
+                result: rows
+            });
+        }else{
+            return res.json({
+                message: 'No se encontraron productos para la categoria',
+                status: false,
+                result: []
+            });
+        };
+    });
+}
+
 module.exports = productCtrl;

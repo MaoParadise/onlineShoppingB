@@ -11,8 +11,53 @@ al iniciar la pagina se muestra el siguiente objeto.
 
 ## END POINTS
 
-/api/products - GET - Obtiene la lista de productos  
-/api/products/:name - GET - Obtiene un producto por su nombre (necesario para el buscador del frontend)  
-/api/categories - GET - Obtiene la lista de categorias
+### /api/products - GET - Obtiene la lista de productos
+    parametros de salida: 
+        {
+            "message": String,
+            "status" : boolean,
+            "result" : Array[JSON]
+        }
+    /*
+    - en caso de no encontrar productos el resultado sera un array vacio.
+    */
+
+### /api/products/:name - GET - Obtiene un producto por su nombre (necesario para el buscador del frontend)  
+    parametros de salida: 
+        {
+            "message": String,
+            "status" : boolean,
+            "result" : Array[JSON] || error
+        }
+    /*
+    -en caso de no encontrar productos el parametro result sera un array vacio.
+
+    -en caso de error inesperado el res
+    el parametro result sera el error resultante de la consulta
+    */
 
 
+### /api/products/category/:categoryId - GET - Obtiene la lista de productos por su id de categoria
+    parametros de salida: 
+        {
+            "message": String,
+            "status" : boolean,
+            "result" : Array[JSON]
+        }
+    /*
+    -en caso de no encontrar productos el parametro result sera un array vacio.
+
+    -en caso de error inesperado el res
+    el parametro result sera el error resultante de la consulta
+    */
+
+### /api/categories - GET - Obtiene la lista de categorias
+    parametros de salida: 
+        {
+            "message": String,
+            "status" : boolean,
+            "result" : Array[JSON]
+        }
+    /*
+    - en caso de no encontrar categorias el resultado sera un array vacio.
+    */
