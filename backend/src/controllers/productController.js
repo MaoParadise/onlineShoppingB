@@ -60,7 +60,9 @@ productCtrl.getCategories = async (req, res) => {
 
 productCtrl.getProductByName = async (req, res) => {
     const { name } = req.params;
-    const rows = await pool.query(`SELECT * FROM product WHERE name LIKE '%${name}%'`, (err, rows) => {
+    // usar placeholder para evitar sql injection
+    const rows = await pool.query(`SELECT * FROM product WHERE name LIKE CONCAT('%', ?, '%')`,
+    [req.params.name] , (err, rows) => {
         if(err) {
             return res.json({
                 message: 'Error en la consulta de producto en metodo getProductByName',
@@ -69,7 +71,7 @@ productCtrl.getProductByName = async (req, res) => {
             })
         }
         if(rows.length > 0){
-            return res.json({
+            return res.json({ 
                 message: 'success',
                 status: true,
                 result: rows
