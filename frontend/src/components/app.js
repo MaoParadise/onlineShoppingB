@@ -78,6 +78,15 @@ const renderCategories = () => {
     orderByCategories.innerHTML = template;
 }
 
+const renderMessage = (html_response, message, status) => {
+    const template = ` <div class="message"> ${message} </div>`;
+    if(!status){
+        products = [];
+        pagination.innerHTML = '';
+    }
+    html_response.innerHTML = template;
+}
+
 orderByNameButton.onclick = () => {
     let sort; 
     if(typeOfSort == 'desc'){
@@ -99,19 +108,6 @@ orderByPriceButton.onclick = () => {
     products = products.sort(sort);
     renderProducts(HTMLResponse);
 }
-
-orderByCategories.onchange = () => {
-    const category_id = orderByCategories.value;
-    const originalProducts = products;
-    if (category_id != 0) {
-        products = products.filter(product => product.category == category_id);
-    }
-    resetPagination();
-    renderProducts(HTMLResponse);
-    products = originalProducts;
-}
-
-
 // seccion de funciones para setear la paginacion 
 
 const setPagination = () =>{
@@ -171,8 +167,6 @@ const setCurrentPageByNextOrPrevious = (order) => {
 }
 
 
-
-
 const setTypeOfSort = (type) => {
     typeOfSort = type;
     console.log(typeOfSort);
@@ -183,11 +177,11 @@ orderBy.onclick = () => {
     if(typeOfSort == 'asc'){
         setTypeOfSort('desc');
         orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = ': DESCENDENTE';
+        orderBy.lastElementChild.innerText = 'DESCENDENTE';
     }else{
         setTypeOfSort('asc');
         orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = ': ASCENDENTE';
+        orderBy.lastElementChild.innerText = 'ASCENDENTE';
     }  
 }
 

@@ -9,19 +9,34 @@ fetchData.API_URL = 'http://localhost:3500/api/';
 // de otra forma favor de consultar el message adjunto para obtener una idea de donde se encuentra el error
 
 
-fetchData.getProducts = async (api_url, html_response) => {
+fetchData.getProducts = async (api_url, html_response, category) => {
     loading.classList.add('loading-screen');
-    return fetch(`${api_url}/products`)
-    .then(response => response.json())
-    .then(data => {
-        if(data.status){
-            products = data.result;
-            renderProducts(html_response);;
-        }else{
-            console.log(data.message);
-        }
-        loading.classList.remove('loading-screen');
-    })
+    if(category == 0){
+        return fetch(`${api_url}/products`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.status){
+                products = data.result;
+                renderProducts(html_response);;
+            }else{
+                console.log(data.message);
+            }
+            loading.classList.remove('loading-screen');
+        })
+    }else {
+        return fetch(`${api_url}/products/category/${category}`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.status){
+                products = data.result;
+                renderProducts(html_response);;
+            }else{
+                console.log(data.message);
+            }
+            loading.classList.remove('loading-screen');
+        })
+    }
+    
 }
 
 fetchData.getCategories = async (api_url) => {
@@ -29,7 +44,6 @@ fetchData.getCategories = async (api_url) => {
     return fetch(`${api_url}/categories`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if(data.status){
             categories = data.result;
             renderCategories();
@@ -45,11 +59,11 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
     return fetch(`${api_url}/products/${name}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if(data.status){
             products = data.result;
             renderProducts(html_response);
         }else{
+            renderMessage(html_response, data.message, data.status);
             console.log(data.message);
         }
         loading.classList.remove('loading-screen');
