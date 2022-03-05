@@ -21,12 +21,12 @@ search.addEventListener('keyup', (event) => {
     }
 );
 
-// activala busqueda de productos al presionar el boton de busqueda
+// activa la busqueda de productos al presionar el boton de busqueda
 searchButton.onclick = () => {
     if(search.value !== '') {
         searchProduct();
     }else{
-        fetchData.getProducts(fetchData.API_URL, HTMLResponse);
+        fetchData.getProducts(fetchData.API_URL, HTMLResponse, 0);
         resetPagination(); // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
     }
 }

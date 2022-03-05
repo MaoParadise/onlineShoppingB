@@ -78,6 +78,7 @@ const renderCategories = () => {
     orderByCategories.innerHTML = template;
 }
 
+// funcion para renderizar un Mensaje en caso de comportamiento inesperado
 const renderMessage = (html_response, message, status) => {
     const template = ` <div class="message"> ${message} </div>`;
     if(!status){
@@ -108,7 +109,32 @@ orderByPriceButton.onclick = () => {
     products = products.sort(sort);
     renderProducts(HTMLResponse);
 }
-// seccion de funciones para setear la paginacion 
+
+
+// ###funciones para setear el orden de los productos
+const setTypeOfSort = (type) => {
+    typeOfSort = type;
+}
+
+orderBy.onclick = () => {
+    orderBy.innerText = '';
+    if(typeOfSort == 'asc'){
+        setTypeOfSort('desc');
+        orderBy.appendChild(document.createElement('span'));
+        orderBy.lastElementChild.innerText = 'DESCENDENTE';
+    }else{
+        setTypeOfSort('asc');
+        orderBy.appendChild(document.createElement('span'));
+        orderBy.lastElementChild.innerText = 'ASCENDENTE';
+    }  
+}
+
+
+
+
+
+
+// ####seccion de funciones para setear la paginacion 
 
 const setPagination = () =>{
     pagination.innerHTML = '';
@@ -148,7 +174,6 @@ const resetPagination = () => {
     currentPage = 1;
     currentProductShowed = 12;
 }
-
 const setCurrentPageByPageNumber = (page_number) => {
     currentPage = page_number;
     currentProductShowed = currentPage * 12;
@@ -166,22 +191,4 @@ const setCurrentPageByNextOrPrevious = (order) => {
     renderProducts(HTMLResponse);
 }
 
-
-const setTypeOfSort = (type) => {
-    typeOfSort = type;
-    console.log(typeOfSort);
-}
-
-orderBy.onclick = () => {
-    orderBy.innerText = '';
-    if(typeOfSort == 'asc'){
-        setTypeOfSort('desc');
-        orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = 'DESCENDENTE';
-    }else{
-        setTypeOfSort('asc');
-        orderBy.appendChild(document.createElement('span'));
-        orderBy.lastElementChild.innerText = 'ASCENDENTE';
-    }  
-}
 
