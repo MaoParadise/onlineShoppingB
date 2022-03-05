@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" sizes="32x32" href="./images/favicon.jpeg">
-    <title> Shopping Cart </title>
+    <title> BSale Shopping Cart </title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href='./src/css/index.css'>
     <link rel="stylesheet" href="./src/css/header.css">
@@ -17,8 +17,8 @@
 <body>
     <header>
         <div class="title">
-            <i class="img-title fab fa-js"></i>
-            <span>Shooping Cart</span>
+            <img class="logo-title" src="./images/logo.png" alt="logo">
+            <span> Shopping Cart </span>
         </div>
         <div class="product-navbar">
             <div class="product-section">
@@ -34,23 +34,38 @@
             </div>
         </div>
     </header> 
-        <div class="filters">
-            <span class="show-everyone"> mostrar todos los productos </span>
-            Ordernar por: 
-                <button class="order-by-names"> nombre </button>
-                <button class="order-by-prices"> precio </button>
-                <select class="order-by-categories"> 
-                    <option value="0">
-                        categorias
-                    </option>
-                    <option value=""></option>
-                </select>
-            <div class="order-by"> : ascendente </div>
+        <div class="container">
+            <div class="left-filters">
+                <div> <span>ORDENAR POR</span> </div>
+                <ul>
+                    <li class="option order-by-names"> Nombre </li>
+                    <li class="option order-by-prices"> Precio </li>
+                    <li>
+                        <select class="order-by-categories"> 
+                            <option value="0">
+                                categorias
+                            </option>
+                            <option value=""></option>
+                        </select>
+                    </li>
+                </ul>
+                <div>
+                    <span class="order-by"> ASCENDENTE </span>
+                </div>
+                
+            </div>
+            
+            <div class="main-container">
+                <div class="filters">
+                    <span class="show-everyone"> Mostrar todos los productos </span>
+                </div> 
+                <div id="app"></div>
+                <div class="pagination">
+                </div>
+            </div>
         </div>
-        <div id="app"></div>
-
-        <div class="pagination">
-        </div>
+        
+        
 
         <div id='shopping-cart-container' class="shopping-cart-container">
             <h2> Carrito </h2>
@@ -66,7 +81,7 @@
             </div>
         </div>
     <footer>
-        <p> Desarrollado por : Carlos Andrés Pastén Bravo .-2021</p>
+        <p> Desarrollado por : Carlos Andrés Pastén Bravo .-2022</p>
         <p> Tecnologias usadas : <i class="fab fa-js"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-node-js"></i></p>
 
     </footer>
