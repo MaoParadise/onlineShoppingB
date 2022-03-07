@@ -16,10 +16,10 @@ aquí se encuentra los estilos y la lógica del frontend, está dividida en la c
 
 ###
     ./src  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/components  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/css  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/utils  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ index.js   **el index.js esta para inicializar y hacer el re-render cuando sea necesario**
+        /components  
+        /css  
+        /utils  
+        / index.js   **el index.js esta para inicializar y hacer el re-render cuando sea necesario**
 
 
 ### sobre la carpeta /assets
@@ -28,8 +28,8 @@ aquí se encuentra los recursos que no necesariamente implican lógica de progra
 
 ###
     ./assets  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/images    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;favicon.jpge   
+        /images    
+        favicon.jpge   
 
   
 
@@ -49,11 +49,11 @@ la lógica del backend se encuentra escrita en esta carpeta, esta divida en la c
 
 ###
     ./src  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/controllers    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/routes    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;database.js    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.js  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keys.js 
+        /controllers    
+        /routes    
+        database.js    
+        index.js  
+        keys.js 
 
 ## API del backend
 
