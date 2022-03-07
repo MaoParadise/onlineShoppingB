@@ -1,7 +1,7 @@
 # Ejercicio proceso de selección para BSALE
 
 ## EJEMPLO DESPLEGADO
-el despliegue del frontend se encuentra actualmente en el dominio https://romantic-heisenberg-14b73f.netlify.app/ de netlify, el backend se encuentra en https://bsale-exercise.herokuapp.com/
+el despliegue del frontend se encuentra actualmente en el dominio https://romantic-heisenberg-14b73f.netlify.app/ de netlify, el backend se encuentra en https://bsalebackend-api.herokuapp.com/
 
 ## frontend
 

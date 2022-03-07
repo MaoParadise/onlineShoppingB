@@ -1,68 +1,4 @@
-.filters{
-    position: relative;
-    width: 95%;
-    margin-bottom: 24px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: center;
-}
 
-.filters .show-everyone{
-    cursor: pointer;
-    position: absolute;
-    top: 0.5rem;
-    color: var(--primary-color);
-}
-
-/*
-.filters .order-by{
-    color: var(--secondary-color-dark);
-    cursor: pointer;
-}
-
-.filters .show-everyone:hover,
-.filters .order-by:hover{
-    color: var(--primary-color-dark);
-}
-
-.filters .order-by-names,
-.filters .order-by-prices,
-.filters .order-by-categories{
-    display: flex;
-    flex-direction: row;
-    font-weight: bold;
-    background-color: var(--secondary-color-light);
-    border-style: none;
-    border: 1px solid var(--primary-color-light);
-    color: var(--primary-color);
-    padding: 0.55rem;
-    cursor: pointer;
-}
-
-.filters .order-by-names:hover,
-.filters .order-by-prices:hover,
-.filters .order-by-categories:hover{
-    background-color: var(--primary-color);
-    color: var(--secondary-color-light);
-}
-
-.filters .order-by-names{
-    border-radius: 15px 0 0 15px;
-    margin-left: 16px;
-}
-.filters .order-by-categories{
-    padding: 0.5rem;
-    border-radius: 0 15px 15px 0;
-    margin-right: 8px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.filters .order-by-categories option:hover{
-    font-weight: bold;
-} */
 
 #app{
     display: flex;
@@ -220,6 +156,111 @@ body .pagination .active-page{
     border-radius: 0 15px 15px 0;
 }
 
+
+.filters{
+    position: relative;
+    width: 95%;
+    margin-bottom: 24px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.filters .show-everyone{
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    color: var(--primary-color);
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-filters{
+    width: 15%;
+    border-right: solid 5px var(--primary-color);
+    text-align: center;
+    padding-top: 2.5rem;
+}
+
+.left-filters > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.left-filters > div {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    margin: 1rem 0;
+    border-bottom: var(--primary-color-light) solid 5px;
+}
+
+.left-filters > div > span {
+    color: var(--secondary-color-light);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.left-filters .option {
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.left-filters .order-by {
+    cursor: pointer;
+}
+
+.left-filters .order-by-categories {
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+
+
+.order-by-prices:hover,
+.order-by-names:hover{
+    border-right: var(--primary-color-light) solid 2px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color-light);
+    font-weight: bold;
+}
+
+.order-by-categories:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color-light);
+}
+
+
+
+
+
+
+
+
 @media (max-width: 768px){
     
     #app .product{
@@ -277,4 +318,49 @@ body .pagination .active-page{
     .filters{
         flex-wrap: wrap;
     }
+
+
+
+    .container{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .main-container{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .left-filters{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-right: solid 5px var(--primary-color);
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .order-by-desktop{
+        display: none;
+    }
+    
+    .left-filters > ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0 0;
+    }
+    
 }
