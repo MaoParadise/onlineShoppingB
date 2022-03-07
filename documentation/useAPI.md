@@ -61,4 +61,4 @@ al iniciar la pagina se muestra el siguiente objeto.
     */
      
 ### /api/api-docs/ - Swagger del proyecto
-    Para mayor informacion consultar el Swagger del proyecto en /api/api-docs/
+    Para mayor informacion consultar el Swagger del proyecto en https://bsalebackend-api.herokuapp.com/api/api-docs/

@@ -8,7 +8,7 @@ fetchData.API_URL = 'https://bsalebackend-api.herokuapp.com/api/';
 // que el status sea true indica que se ha realizado correctamente
 // de otra forma favor de consultar el message adjunto para obtener una idea de donde se encuentra el error
 
-
+// si el parametro category es igual a 0 implica que se buscan todos los productos independiente de su categoria
 fetchData.getProducts = async (api_url, html_response, category) => {
     loading.classList.add('loading-screen');
     if(category == 0){
