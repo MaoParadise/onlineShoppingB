@@ -8,7 +8,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
-// Settings 
+// Setting of Swagger
 const swaggerOptions = {
     swaggerDefinition: { 
         info: {
@@ -20,7 +20,7 @@ const swaggerOptions = {
                 url: "https://github.com/MaoParadise",
                 email: "carlos92.pastenbravo@gmail.com"
             },
-            servers: ["http://localhost:3500"]
+            servers: ["https://bsale-exercise.herokuapp.com/","http://localhost:3500"]
         }
     }, 
     apis : ['./src/routes/*.js']
@@ -29,7 +29,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-
+// Settings 
 app.set('port', process.env.PORT || 3500);
 app.set('json spaces', 4);
 
