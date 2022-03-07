@@ -1,4 +1,4 @@
 /garbage
-/backend/node_modules
+backend/node_modules
 /backend/src/keys.js
 toFix.txt

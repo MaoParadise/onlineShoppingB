@@ -60,5 +60,5 @@ al iniciar la pagina se muestra el siguiente objeto.
     - en caso de no encontrar categorias el resultado sera un array vacio.
     */
      
-### /api/api-docs/
+### /api/api-docs/ - Swagger del proyecto
     Para mayor informacion consultar el Swagger del proyecto en /api/api-docs/

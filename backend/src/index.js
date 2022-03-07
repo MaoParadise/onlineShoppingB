@@ -20,7 +20,7 @@ const swaggerOptions = {
                 url: "https://github.com/MaoParadise",
                 email: "carlos92.pastenbravo@gmail.com"
             },
-            servers: ["https://bsale-exercise.herokuapp.com/","http://localhost:3500"]
+            servers: ["https://bsalebackend-api.herokuapp.com/","http://localhost:3500"]
         }
     }, 
     apis : ['./src/routes/*.js']
