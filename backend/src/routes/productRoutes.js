@@ -73,5 +73,6 @@ router.get('/products/:name', product.getProductByName);
 */
 router.get('/products/category/:categoryId', product.getProductsByCategory);
 
+router.get('/products/byPages/:page', product.getProductsWithPagination);
 
 module.exports = router;

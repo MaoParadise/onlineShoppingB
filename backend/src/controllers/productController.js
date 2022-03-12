@@ -31,6 +31,34 @@ productCtrl.getProducts = async ( req, res) =>{
             });
         };
     });
+} 
+
+productCtrl.getProductsWithPagination = async (req, res) => {
+    let { page } = req.params;
+    page = page - 1;
+    let offset = 5 * page;
+    const rows = await pool.query(`SELECT * FROM product LIMIT ${offset}, 5`, (err, rows) => {
+        if(err) {
+            return res.status(500).json({
+                message: 'Error al obtener todos los productos en el metodo getProductsWithPagination',
+                status: false,
+                result: err
+            })
+        }
+        if(rows.length > 0){
+            return res.status(200).json({
+                message: 'success',
+                status: true,
+                result: rows
+            });
+        }else{
+            return res.status(404).json({
+                message: 'No se encontraron productos',
+                status: false,
+                result: []
+            });
+        }
+    });
 }
 
 productCtrl.getCategories = async (req, res) => {
