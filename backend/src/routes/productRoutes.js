@@ -49,7 +49,7 @@ router.get('/categories', product.getCategories);
    *       200:
    *         description: Obtiene un producto por su nombre
 */
-router.get('/products/:name', product.getProductByName);
+router.post('/products/byName/:name', product.getProductByName);
 
 /**
    * @swagger
@@ -71,8 +71,8 @@ router.get('/products/:name', product.getProductByName);
    *       500:
    *         description: Error al obtener la lista de productos por su id de categoria
 */
-router.get('/products/category/:categoryId', product.getProductsByCategory);
+router.post('/products/byCategory/:categoryId', product.getProductsByCategory);
 
-router.get('/products/byPages/:page', product.getProductsWithPagination);
+router.post('/products/byPages', product.getProductsWithPagination);
 
 module.exports = router;

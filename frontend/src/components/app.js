@@ -1,8 +1,14 @@
 let products = []; // array para almacenar los productos que llegan de las consultas 
+let totalProductsRequest = 0; // variable para almacenar el numero total de elemetos surgidos a traves de la peticion de la API
+
 let categories = []; // array para alamacenar las categorias que llegan del backend
+
 let paginations = 0; // variable para almacenar el numero de paginas que se desplegaran en app 
 let currentPage = 1; // variable para almacenar la pagina actual mostrada en el html
-let currentProductShowed = 12; // variable para almacenar el numero de productos que se desplegaran en app
+let pagesDisplayed = 5; // varibale para almacenar la cantidad de paginas que se desplegaran en app antes de hacer otro request a la API
+let currentProductShowed = 12; // variable para almacenar el numero de productos que se desplegaran por pagina
+
+
 let typeOfSort = 'asc'; // varibale para almacenar el tipo de orden que se desea
 
 
@@ -67,6 +73,54 @@ const renderProducts = (html_response) => {
    
 }
 
+const renderProductsWithPagination = (html_response , page) => {
+
+    setPagination();
+    // si el numero de productos es menor a 12 se muestran todos los productos
+    if(paginations == 1){
+        currentPage = 1;
+        if(currentProductShowed > products[page -1].length){
+            currentProductShowed = products[page -1].length;
+        }
+    }
+    if((currentProductShowed-1) > products[page -1].length){
+        currentProductShowed = products[page -1].length;
+    }
+
+    const template = products[page -1].map(product => {
+        return `
+            <div class="product">
+                <div class="image">
+                    ${(product.discount > 0)
+                        ? ` <div class="discount">
+                                <i class="fas fa-certificate"></i>
+                                <span> ${product.discount}% </span>
+                            </div>`
+                        : ''}
+                    <img src="${(product.url_image)?product.url_image : defaultImage }" alt="${product.name}">
+                </div>
+                <div class="description">
+                    <h4>${product.name}</h4>
+                    <p>$.-${product.price}</p>
+                    <button
+                        class="add-to-cart"
+                        onclick='addItem(${JSON.stringify(product)})'
+                    >
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button
+                        class="buy"
+                        onclick='buyNow(${JSON.stringify(product)})'
+                    > 
+                        <i class="fas fa-money-bill"></i>
+                    </button>
+                </div>
+            </div>
+        `
+    });
+    html_response.innerHTML = template.join('');
+}
+
 // funcion para renderizar las categorias
 const renderCategories = () => {
     categories = categories.sort((a, b) => a.name.localeCompare(b.name));
@@ -95,8 +149,25 @@ orderByNameButton.onclick = () => {
     }else{
         sort = (a, b) => a.name.localeCompare(b.name);
     }
-    products = products.sort(sort);
-    renderProducts(HTMLResponse);
+    
+    let sortedProducts = [];
+    // para ordenar todos los productos pasan a aun array unico y luego se ordenan
+    products.map( product => { 
+        product.map(elemet => {
+            sortedProducts.push(elemet);
+        })
+    })
+    sortedProducts.sort(sort);
+
+    // una vez ordenados los productos se devuelve al array de productos separados por arreglos del 
+    // tamaño definido por la variable currentProductShowed
+    products = [];
+    for(let i = 0; i < pagesDisplayed; i++){
+        products.push(sortedProducts.slice(i * currentProductShowed, (i + 1) * currentProductShowed));
+    }
+
+    // se renderiza y se muestra el orden desde la pagina actual.
+    renderProductsWithPagination(HTMLResponse, currentPage);
 }
 
 orderByPriceButton.onclick = () => {
@@ -106,8 +177,24 @@ orderByPriceButton.onclick = () => {
     }else{
         sort = (a, b) => a.price - b.price;
     }
-    products = products.sort(sort);
-    renderProducts(HTMLResponse);
+    let sortedProducts = [];
+    // para ordenar todos los productos pasan a aun array unico y luego se ordenan
+    products.map( product => { 
+        product.map(elemet => {
+            sortedProducts.push(elemet);
+        })
+    })
+    sortedProducts.sort(sort);
+
+    // una vez ordenados los productos se devuelve al array de productos separados por arreglos del 
+    // tamaño definido por la variable currentProductShowed
+    products = [];
+    for(let i = 0; i < pagesDisplayed; i++){
+        products.push(sortedProducts.slice(i * currentProductShowed, (i + 1) * currentProductShowed));
+    }
+
+    // se renderiza y se muestra el orden desde la pagina actual.
+    renderProductsWithPagination(HTMLResponse, currentPage);
 }
 
 
@@ -138,8 +225,7 @@ orderBy.onclick = () => {
 
 const setPagination = () =>{
     pagination.innerHTML = '';
-    if((products.length) / 12 > 1){
-        paginations = Math.ceil((products.length) / 12);
+    if((totalProductsRequest / 12) > 1){
         if(paginations > 1) {
             pagination.appendChild(document.createElement('button'));
             pagination.lastElementChild.classList.add('previous');
@@ -177,7 +263,7 @@ const resetPagination = () => {
 const setCurrentPageByPageNumber = (page_number) => {
     currentPage = page_number;
     currentProductShowed = currentPage * 12;
-    renderProducts(HTMLResponse);
+    renderProductsWithPagination(HTMLResponse, currentPage);
 }
 
 const setCurrentPageByNextOrPrevious = (order) => {
@@ -188,7 +274,7 @@ const setCurrentPageByNextOrPrevious = (order) => {
         currentPage--;
     }
     currentProductShowed = currentPage * 12;
-    renderProducts(HTMLResponse);
+    renderProductsWithPagination(HTMLResponse, currentPage);
 }
 
 

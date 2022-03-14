@@ -1,6 +1,14 @@
 const fetchData = {}
 const loading  = document.querySelector('.loading-stand');
-
+const requestSetup = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        "row" : 0, // numero de fila
+        "pages" : pagesDisplayed, // numero de paginas
+        "elementByPage" : currentProductShowed // numero de elementos por pagina
+    }),
+}
 // fetchData.API_URL = 'https://bsalebackend-api.herokuapp.com/api/';
 fetchData.API_URL = 'http://localhost:3500/api/';
 
@@ -13,24 +21,30 @@ fetchData.API_URL = 'http://localhost:3500/api/';
 fetchData.getProducts = async (api_url, html_response, category) => {
     loading.classList.add('loading-screen');
     if(category == 0){
-        return fetch(`${api_url}/products`)
+        return fetch(`${api_url}/products/byPages/` , requestSetup)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if(data.status){
-                products = data.result;
-                renderProducts(html_response);;
+                products = data.result.pages;
+                totalProductsRequest = data.result.totalElements;
+                paginations = data.result.totalPages;
+                renderProductsWithPagination(html_response, 1);
             }else{
                 console.log(data.message);
             }
             loading.classList.remove('loading-screen');
         })
     }else {
-        return fetch(`${api_url}/products/category/${category}`)
+        return fetch(`${api_url}/products/byCategory/${category}`, requestSetup)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if(data.status){
-                products = data.result;
-                renderProducts(html_response);;
+                products = data.result.pages;
+                totalProductsRequest = data.result.totalElements;
+                paginations = data.result.totalPages;
+                renderProductsWithPagination(html_response, 1);
             }else{
                 console.log(data.message);
             }
@@ -39,6 +53,7 @@ fetchData.getProducts = async (api_url, html_response, category) => {
     }
     
 }
+
 
 fetchData.getCategories = async (api_url) => {
     loading.classList.add('loading-screen');
@@ -57,12 +72,15 @@ fetchData.getCategories = async (api_url) => {
 
 fetchData.getProductsByName = async (api_url, html_response, name) => {
     loading.classList.add('loading-screen');
-    return fetch(`${api_url}/products/${name}`)
+    return fetch(`${api_url}/products/byName/${name}`, requestSetup)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if(data.status){
-            products = data.result;
-            renderProducts(html_response);
+            products = data.result.pages;
+            totalProductsRequest = data.result.totalElements;
+            paginations = data.result.totalPages;
+            renderProductsWithPagination(html_response, 1);
         }else{
             renderMessage(html_response, data.message, data.status);
             console.log(data.message);

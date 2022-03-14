@@ -34,10 +34,11 @@ productCtrl.getProducts = async ( req, res) =>{
 } 
 
 productCtrl.getProductsWithPagination = async (req, res) => {
-    let { page } = req.params;
-    page = page - 1;
-    let offset = 5 * page;
-    const rows = await pool.query(`SELECT * FROM product LIMIT ${offset}, 5`, (err, rows) => {
+    let { row, pages, elementByPage } = req.body;
+    let limit = elementByPage * pages;
+
+    const rows = await pool.query(`SELECT * FROM product LIMIT ?, ?`,
+    [row, limit],(err, rows) => {
         if(err) {
             return res.status(500).json({
                 message: 'Error al obtener todos los productos en el metodo getProductsWithPagination',
@@ -46,10 +47,19 @@ productCtrl.getProductsWithPagination = async (req, res) => {
             })
         }
         if(rows.length > 0){
+            let result = [];
+            for(let i = 0; i < pages; i++){
+                result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
+            }
+
             return res.status(200).json({
                 message: 'success',
                 status: true,
-                result: rows
+                result: {
+                    pages : result,
+                    totalPages : Math.ceil(rows.length / elementByPage),
+                    totalElements : rows.length
+                }
             });
         }else{
             return res.status(404).json({
@@ -87,10 +97,11 @@ productCtrl.getCategories = async (req, res) => {
 }
 
 productCtrl.getProductByName = async (req, res) => {
-    const { name } = req.params;
+    let { row, pages, elementByPage } = req.body;
+    let limit = elementByPage * pages;
     // usar placeholder para evitar sql injection
-    const rows = await pool.query(`SELECT * FROM product WHERE name LIKE CONCAT('%', ?, '%')`,
-    [req.params.name] , (err, rows) => {
+    const rows = await pool.query(`SELECT * FROM product WHERE name LIKE CONCAT('%', ?, '%') LIMIT ?, ?`,
+    [req.params.name, row, limit] , (err, rows) => {
         if(err) {
             return res.status(500).json({
                 message: 'Error en la consulta de producto en metodo getProductByName',
@@ -99,10 +110,20 @@ productCtrl.getProductByName = async (req, res) => {
             })
         }
         if(rows.length > 0){
+            let result = [];
+            for(let i = 0; i < pages; i++){
+                result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
+            }
+
+
             return res.status(200).json({ 
                 message: 'success',
                 status: true,
-                result: rows
+                result: {
+                    pages : result,
+                    totalPages : Math.ceil(rows.length / elementByPage),
+                    totalElements : rows.length
+                }
             });
         }else{
             return res.status(404).json({
@@ -115,12 +136,15 @@ productCtrl.getProductByName = async (req, res) => {
 }
 
 productCtrl.getProductsByCategory = async (req, res) => {
+    let { row, pages, elementByPage } = req.body;
+    let limit = elementByPage * pages;
     const rows =
     await pool.query(`SELECT product.* FROM product
                         INNER JOIN category
                         ON product.category = category.id
-                        WHERE product.category = ?`,
-    [req.params.categoryId] , (err, rows) => {
+                        WHERE product.category = ?
+                        LIMIT ?, ?`,
+    [req.params.categoryId, row, limit] , (err, rows) => {
         if(err) {
             return res.status(500).json({
                 message: 'Error en la consulta de producto en metodo getProductsByCategory',
@@ -129,10 +153,19 @@ productCtrl.getProductsByCategory = async (req, res) => {
             })
         }
         if(rows.length > 0){
-            return res.status(200).json({ 
+            let result = [];
+            for(let i = 0; i < pages; i++){
+                result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
+            }
+
+            return res.status(200).json({
                 message: 'success',
                 status: true,
-                result: rows
+                result: {
+                    pages : result,
+                    totalPages : Math.ceil(rows.length / elementByPage),
+                    totalElements : rows.length
+                }
             });
         }else{
             return res.status(404).json({
