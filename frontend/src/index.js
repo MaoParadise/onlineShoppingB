@@ -32,3 +32,8 @@ orderByCategories.onchange = () => {
     reRender(category_id);
 }
 
+nextPages.onclick = () => {
+    console.log('next');
+}
+
+

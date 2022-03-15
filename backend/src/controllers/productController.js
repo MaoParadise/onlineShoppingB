@@ -51,15 +51,20 @@ productCtrl.getProductsWithPagination = async (req, res) => {
             for(let i = 0; i < pages; i++){
                 result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
             }
-
+            const morePage = (result[result.length - 1].length < elementByPage) ? false : true;
             return res.status(200).json({
                 message: 'success',
                 status: true,
                 result: {
                     pages : result,
                     totalPages : Math.ceil(rows.length / elementByPage),
-                    totalElements : rows.length
-                }
+                    totalElements : rows.length,
+                    isMorePages : morePage,
+                    previousRowValue : (row - rows.length > 0) ? row - limit : 0,
+                    nextRowValue : (morePage)? row + rows.length : 0,
+                    nextPage : (morePage)? result.length + 1 : 0,
+                    previousPage : ((result.length - pages) - 1 > 0)? result.length - 1 : 0
+                }   
             });
         }else{
             return res.status(404).json({
@@ -122,8 +127,13 @@ productCtrl.getProductByName = async (req, res) => {
                 result: {
                     pages : result,
                     totalPages : Math.ceil(rows.length / elementByPage),
-                    totalElements : rows.length
-                }
+                    totalElements : rows.length,
+                    isMorePages : morePage,
+                    previousRowValue : (row - rows.length > 0) ? row - limit : 0,
+                    nextRowValue : (morePage)? row + rows.length : 0,
+                    nextPage : (morePage)? result.length + 1 : 0,
+                    previousPage : ((result.length - pages) - 1 > 0)? result.length - 1 : 0
+                }  
             });
         }else{
             return res.status(404).json({
@@ -164,8 +174,13 @@ productCtrl.getProductsByCategory = async (req, res) => {
                 result: {
                     pages : result,
                     totalPages : Math.ceil(rows.length / elementByPage),
-                    totalElements : rows.length
-                }
+                    totalElements : rows.length,
+                    isMorePages : morePage,
+                    previousRowValue : (row - rows.length > 0) ? row - limit : 0,
+                    nextRowValue : (morePage)? row + rows.length : 0,
+                    nextPage : (morePage)? result.length + 1 : 0,
+                    previousPage : ((result.length - pages) - 1 > 0)? result.length - 1 : 0
+                }  
             });
         }else{
             return res.status(404).json({

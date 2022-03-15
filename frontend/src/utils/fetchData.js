@@ -4,7 +4,7 @@ const requestSetup = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-        "row" : 0, // numero de fila
+        "row" : initialRow, // numero de fila
         "pages" : pagesDisplayed, // numero de paginas
         "elementByPage" : currentProductShowed // numero de elementos por pagina
     }),
@@ -29,6 +29,8 @@ fetchData.getProducts = async (api_url, html_response, category) => {
                 products = data.result.pages;
                 totalProductsRequest = data.result.totalElements;
                 paginations = data.result.totalPages;
+                isMorePages = data.result.isMorePages;
+                requestRespond = data.result;
                 renderProductsWithPagination(html_response, 1);
             }else{
                 console.log(data.message);
@@ -44,6 +46,8 @@ fetchData.getProducts = async (api_url, html_response, category) => {
                 products = data.result.pages;
                 totalProductsRequest = data.result.totalElements;
                 paginations = data.result.totalPages;
+                isMorePages = data.result.isMorePages;
+                requestRespond = data.result;
                 renderProductsWithPagination(html_response, 1);
             }else{
                 console.log(data.message);
@@ -53,7 +57,6 @@ fetchData.getProducts = async (api_url, html_response, category) => {
     }
     
 }
-
 
 fetchData.getCategories = async (api_url) => {
     loading.classList.add('loading-screen');
@@ -77,9 +80,11 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
     .then(data => {
         console.log(data);
         if(data.status){
+            requestRespond = data.result;
             products = data.result.pages;
             totalProductsRequest = data.result.totalElements;
             paginations = data.result.totalPages;
+            isMorePages = data.result.isMorePages;
             renderProductsWithPagination(html_response, 1);
         }else{
             renderMessage(html_response, data.message, data.status);
