@@ -3,8 +3,10 @@
 */
 
 import fetchData from './utils/fetchData.js';
+import paginationComponent from './components/pagination.js';
 const search = document.querySelector('.search');
 const title = document.querySelector('.title');
+let nextPages = document.querySelector('.nextPages');
 
 // inicializacion de la pagina y renderizando en el DOM los componentes dinamicos
 fetchData.getProducts(fetchData.API_URL, HTMLResponse, 0);
@@ -19,9 +21,9 @@ renderCategories();
 
 const reRender = (category_id) =>{
     search.value = '';
-    resetPagination();
+    paginationComponent.resetPagination();
     fetchData.getProducts(fetchData.API_URL, HTMLResponse, category_id);
-    fetchData.getCategories(fetchData.API_URL);
+    //fetchData.getCategories(fetchData.API_URL);
 }
 
 title.onclick  = () => reRender(0);
@@ -32,8 +34,10 @@ orderByCategories.onchange = () => {
     reRender(category_id);
 }
 
-nextPages.onclick = () => {
-    console.log('next');
-}
+
+
+
+
+
 
 

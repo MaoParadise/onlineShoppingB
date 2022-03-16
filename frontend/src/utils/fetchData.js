@@ -1,3 +1,4 @@
+import paginationComponent from "../components/pagination.js";
 const fetchData = {}
 const loading  = document.querySelector('.loading-stand');
 const requestSetup = {
@@ -32,6 +33,7 @@ fetchData.getProducts = async (api_url, html_response, category) => {
                 isMorePages = data.result.isMorePages;
                 requestRespond = data.result;
                 renderProductsWithPagination(html_response, 1);
+                paginationComponent.setPagination();
             }else{
                 console.log(data.message);
             }
@@ -49,6 +51,7 @@ fetchData.getProducts = async (api_url, html_response, category) => {
                 isMorePages = data.result.isMorePages;
                 requestRespond = data.result;
                 renderProductsWithPagination(html_response, 1);
+                paginationComponent.setPagination();
             }else{
                 console.log(data.message);
             }
@@ -86,6 +89,7 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
             paginations = data.result.totalPages;
             isMorePages = data.result.isMorePages;
             renderProductsWithPagination(html_response, 1);
+            paginationComponent.setPagination();
         }else{
             renderMessage(html_response, data.message, data.status);
             console.log(data.message);
@@ -94,5 +98,13 @@ fetchData.getProductsByName = async (api_url, html_response, name) => {
     })
 }
 
+
+fetchData.setRequestSetup = (initialRow, pagesDisplayed, currentProductShowed) => {
+    requestSetup.body = JSON.stringify({
+        "row" : initialRow, // numero de fila
+        "pages" : pagesDisplayed, // numero de paginas
+        "elementByPage" : currentProductShowed // numero de elementos por pagina
+    })
+}
 
 export default fetchData;

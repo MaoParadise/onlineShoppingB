@@ -60,4 +60,16 @@ la lógica del backend se encuentra escrita en esta carpeta, esta divida en la c
 vease en la carpeta documentations el apartado de useAPI.md que explica la estructura de la API del backend
 
 
+## Instalacion
+###
+    $ git clone https://github.com/MaoParadise/onlineShopping
+
+###
+    $ cd frontend
+    $ # Todos los recursos ya se encuentran dentro de la carpeta frontend, copie y pegue los elementos dentro del servidor web de su preferencia.
+
+###
+    $ cd backend
+    $ npm install
+    $ npm start # Si esta en un ambiente de desarrollo se sugiere usar npm run dev.
 

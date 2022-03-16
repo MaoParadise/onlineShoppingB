@@ -2,3 +2,4 @@
 backend/node_modules
 /backend/src/keys.js
 toFix.txt
+deploy

@@ -14,7 +14,7 @@ const swaggerOptions = {
         info: {
             title: "API REST Shopping Cart - NodeJS BSALE selection process 2022",
             description: "API REST Shopping Cart - NodeJS BSALE selection process 2022",
-            version: "1.0.0",
+            version: "1.2.0",
             contact: {
                 name: "Carlos Andrés Pastén Bravo",
                 url: "https://github.com/MaoParadise",

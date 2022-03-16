@@ -1,5 +1,6 @@
 // variables y funciones que se usan en el componente Header
 import fetchData from '../utils/fetchData.js';
+import paginationComponent from './pagination.js';
 let productSearch = '';
 
 // elementos html que interactuan dentro del componente app.
@@ -10,11 +11,11 @@ search.addEventListener('keyup', (event) => {
         productSearch = event.target.value;
         // si el usuario presiona enter en el input, se ejecuta la funcion searchProduct
         if(event.keyCode === 13) {
-            resetPagination(); 
+            paginationComponent.resetPagination(); 
             if(productSearch !== '') {
                 searchProduct();
             }else{
-                fetchData.getProducts(fetchData.API_URL, HTMLResponse);
+                fetchData.getProducts(fetchData.API_URL, HTMLResponse, 0);
                 // resetea la paginacion para que no se muestre la paginacion de la pagina anterior
             }
         }

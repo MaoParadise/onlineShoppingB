@@ -120,7 +120,7 @@ productCtrl.getProductByName = async (req, res) => {
                 result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
             }
 
-
+            const morePage = (result[result.length - 1].length < elementByPage) ? false : true;
             return res.status(200).json({ 
                 message: 'success',
                 status: true,
@@ -167,7 +167,7 @@ productCtrl.getProductsByCategory = async (req, res) => {
             for(let i = 0; i < pages; i++){
                 result.push(rows.slice(i * elementByPage, (i + 1) * elementByPage));
             }
-
+            const morePage = (result[result.length - 1].length < elementByPage) ? false : true;
             return res.status(200).json({
                 message: 'success',
                 status: true,

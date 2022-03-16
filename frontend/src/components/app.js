@@ -9,7 +9,7 @@ let currentPage = 1; // variable para almacenar la pagina actual mostrada en el 
 let initialRow = 0; // variable para almacenar desde que elemento de hace el request de los productos de la API
 let paginations = 0; // variable para almacenar el numero de paginas que se desplegaran en app 
 let pagesDisplayed = 5; // varibale para almacenar la cantidad de paginas que se desplegaran en app antes de hacer otro request a la API
-let currentProductShowed = 8; // variable para almacenar el numero de productos que se desplegaran por pagina
+let currentProductShowed = 12; // variable para almacenar el numero de productos que se desplegaran por pagina
 let isMorePages = false; // variable para saber si hay mas paginas para mostrar
 
 let typeOfSort = 'asc'; // varibale para almacenar el tipo de orden que se desea
@@ -22,25 +22,13 @@ let leftOrderByNameButton = document.querySelector('.order-by-names2');
 let orderByPriceButton = document.querySelector('.order-by-prices');
 let orderByCategories = document.querySelector('.order-by-categories');
 let pagination = document.querySelector('.pagination');
-let nextPages = document.querySelector('.more');
-let previousPages;
 const showEveryone = document.querySelector('.show-everyone');
 let orderBy = document.querySelector('.order-by');
 
 
-// funcion para renderizar los productos
+// funcion para renderizar los productos ( DECREPATED )
 const renderProducts = (html_response) => {
     setPagination();
-    // si el numero de productos es menor a 12 se muestran todos los productos
-    if(paginations == 1){
-        currentPage = 1;
-        if(currentProductShowed > products.length){
-            currentProductShowed = products.length;
-        }
-    }
-    if((currentProductShowed-1) > products.length){
-        currentProductShowed = products.length;
-    }
 
     // se genera el template de los productos
     const template = (products.slice((currentPage-1)*12, (currentProductShowed))).map(product => {
@@ -78,20 +66,17 @@ const renderProducts = (html_response) => {
    
 }
 
+// * Nueva funcion para renderizar 
 const renderProductsWithPagination = (html_response , page) => {
 
-    setPagination();
-    // si el numero de productos es menor a 12 se muestran todos los productos
-    if(paginations == 1){
-        currentPage = 1;
-        if(currentProductShowed > products[page -1].length){
-            currentProductShowed = products[page -1].length;
-        }
+    if(pagination.children.item(currentPage) !== null){
+        let element = pagination.children;
+        Array.from(element).forEach(element => {
+            element.classList.remove('active-page');
+        });
+        pagination.children.item(currentPage).classList.add('active-page');
     }
-    if((currentProductShowed-1) > products[page -1].length){
-        currentProductShowed = products[page -1].length;
-    }
-
+    
     const template = products[page -1].map(product => {
         return `
             <div class="product">
@@ -220,78 +205,4 @@ orderBy.onclick = () => {
         orderBy.lastElementChild.innerText = 'ASCENDENTE';
     }  
 }
-
-
-
-
-
-
-// ####seccion de funciones para setear la paginacion 
-
-const setPagination = () =>{
-    pagination.innerHTML = '';
-    if((totalProductsRequest / 12) > 1){
-        if(paginations > 1) {
-            pagination.appendChild(document.createElement('button'));
-            pagination.lastElementChild.classList.add('previous');
-            pagination.lastElementChild.innerText = 'Anterior';
-            pagination.lastElementChild.onclick = () => {
-                setCurrentPageByNextOrPrevious('previous');
-            }
-        }
-        for(let i = 1; i <= paginations; i++){ // for para crear los botones de paginacion
-            let page = document.createElement('button');
-            page.innerText = `${i}`;
-            if(i == currentPage){
-                page.classList.add('active-page');
-            }
-            page.addEventListener('click', () => {
-                setCurrentPageByPageNumber(i);
-            });
-            pagination.appendChild(page);
-        }
-        if(isMorePages) {
-            let more = document.createElement('button');
-            more.innerText = `...`;
-            more.classList.add('more');
-            more.list
-            more.addEventListener('click', () => {
-
-                initialRow = requestRespond.nextRowValue;
-            });
-            pagination.appendChild(more);
-        }
-        if(paginations > 1) {
-            pagination.appendChild(document.createElement('button'));
-            pagination.lastElementChild.classList.add('next');
-            pagination.lastElementChild.innerText = 'Siguiente';
-            pagination.lastElementChild.onclick = () => {
-                setCurrentPageByNextOrPrevious('next');
-            }
-        }
-    }
-}
-// si por cualquier instancia la paginacion no ocurre bien siempre se puede usar esta funcion para resetear a la pagina 1
-const resetPagination = () => { 
-    currentPage = 1;
-    //currentProductShowed = 12;
-}
-
-const setCurrentPageByPageNumber = (page_number) => {
-    currentPage = page_number;
-    //currentProductShowed = currentPage * 12;
-    renderProductsWithPagination(HTMLResponse, currentPage);
-}
-
-const setCurrentPageByNextOrPrevious = (order) => {
-    if(order == 'next' && currentPage < paginations){
-        currentPage++;
-    }
-    if(order == 'previous' && currentPage > 1){
-        currentPage--;
-    }
-    //currentProductShowed = currentPage * 12;
-    renderProductsWithPagination(HTMLResponse, currentPage);
-}
-
 
